@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Agency Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Agency Registration</h2>
+  <div class="form-group">
+    <label>Name of Agency:</label>
+    <input type="text" id="agencyName">
+  </div>
+  <div class="form-group">
+    <label>Contact Info:</label>
+    <input type="text" id="agencyContact">
+  </div>
+  <button class="submit-button" id="agencySubmit" onclick="submitAgency()" disabled>Submit</button>
+  <div class="message" id="agencyMessage"></div>
+</div>
+
+<script>
+  function checkInputs() {
+    const name = document.getElementById('agencyName').value.trim();
+    const contact = document.getElementById('agencyContact').value.trim();
+    document.getElementById('agencySubmit').disabled = !(name && contact);
+  }
+
+  document.querySelectorAll('input').forEach(el => {
+    el.addEventListener('input', checkInputs);
+  });
+
+  function submitAgency() {
+    document.getElementById('agencyMessage').innerHTML = "You will receive information of customers.";
+  }
+</script>
+
+</body>
+</html>

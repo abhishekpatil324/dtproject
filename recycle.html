@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recycle Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Recycling Form</h2>
+  <div class="form-group">
+    <label>Name:</label>
+    <input type="text" id="recyclerName">
+  </div>
+  <div class="form-group">
+    <label>Address:</label>
+    <textarea id="recyclerAddress"></textarea>
+  </div>
+  <div class="form-group">
+    <label>What you want to recycle:</label>
+    <input type="text" id="recycleItem">
+  </div>
+  <button class="submit-button" id="recycleSubmit" onclick="submitRecycle()" disabled>Submit</button>
+  <div class="message" id="recycleMessage"></div>
+</div>
+
+<script>
+  function checkInputs() {
+    const name = document.getElementById('recyclerName').value.trim();
+    const address = document.getElementById('recyclerAddress').value.trim();
+    const item = document.getElementById('recycleItem').value.trim();
+    document.getElementById('recycleSubmit').disabled = !(name && address && item);
+  }
+
+  document.querySelectorAll('input, textarea').forEach(el => {
+    el.addEventListener('input', checkInputs);
+  });
+
+  function submitRecycle() {
+    document.getElementById('recycleMessage').innerHTML = "Recycling agencies will contact you soon.<br>Thanks for recycling!";
+  }
+</script>
+
+</body>
+</html>
